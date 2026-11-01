@@ -14,11 +14,10 @@ st.set_page_config(
 
 st.markdown("""
     <style>
- st.markdown("""
-    <style>
         .block-container { padding-top: 1.5rem; padding-bottom: 2rem; }
+        div[data-testid="stSidebarHeader"] { padding-bottom: 0px; }
         
-        /* Contenedor de las tarjetas KPI */
+        /* Contenedor de las tarjetas KPI en modo oscuro */
         div[data-testid="stMetric"] {
             background-color: #1E293B !important;
             border: 1px solid #334155 !important;
@@ -26,21 +25,23 @@ st.markdown("""
             padding: 16px !important;
         }
 
-        /* Títulos de las métricas (Total, Vencidas, Próximas) */
+        /* Títulos de las tarjetas (Total, Vencidas, Próximas) */
         div[data-testid="stMetricLabel"] p {
             color: #94A3B8 !important;
-            font-size: 0.9rem !important;
+            font-size: 0.95rem !important;
             font-weight: 600 !important;
         }
 
         /* Números grandes */
         div[data-testid="stMetricValue"] div {
             color: #F8FAFC !important;
-            font-size: 2rem !important;
+            font-size: 2.2rem !important;
             font-weight: 700 !important;
         }
     </style>
 """, unsafe_allow_html=True)
+
+def calcular_dias_habiles_colombia(fecha_inicio: date, fecha_fin: date, festivos_co) -> int:
     if pd.isna(fecha_fin):
         return None
     if fecha_inicio == fecha_fin:
